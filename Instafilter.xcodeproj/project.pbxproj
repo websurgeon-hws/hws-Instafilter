@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0190A28238E696100BC327B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0190A27238E696100BC327B /* ImagePicker.swift */; };
 		D01F7777238B16EF0089B78E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F7776238B16EF0089B78E /* AppDelegate.swift */; };
 		D01F7779238B16EF0089B78E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F7778238B16EF0089B78E /* SceneDelegate.swift */; };
 		D01F777B238B16EF0089B78E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F777A238B16EF0089B78E /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0190A27238E696100BC327B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D01F7773238B16EF0089B78E /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01F7776238B16EF0089B78E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D01F7778238B16EF0089B78E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				D01F7776238B16EF0089B78E /* AppDelegate.swift */,
 				D01F7778238B16EF0089B78E /* SceneDelegate.swift */,
 				D01F777A238B16EF0089B78E /* ContentView.swift */,
+				D0190A27238E696100BC327B /* ImagePicker.swift */,
 				D01F777C238B16F10089B78E /* Assets.xcassets */,
 				D01F7781238B16F10089B78E /* LaunchScreen.storyboard */,
 				D01F7784238B16F10089B78E /* Info.plist */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01F7777238B16EF0089B78E /* AppDelegate.swift in Sources */,
+				D0190A28238E696100BC327B /* ImagePicker.swift in Sources */,
 				D01F7779238B16EF0089B78E /* SceneDelegate.swift in Sources */,
 				D01F777B238B16EF0089B78E /* ContentView.swift in Sources */,
 			);
