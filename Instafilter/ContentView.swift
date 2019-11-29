@@ -20,7 +20,7 @@ struct ContentView: View {
 
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
-
+    
     var body: some View {
         let intensity = Binding<Double>(
             get: {
@@ -59,7 +59,7 @@ struct ContentView: View {
                 .padding()
                 
                 HStack {
-                    Button("Change Filter") {
+                    Button(self.displayName(for: self.currentFilter)) {
                         self.showingFilterSheet = true
                     }
                     
@@ -94,33 +94,42 @@ struct ContentView: View {
             }
             .actionSheet(isPresented: $showingFilterSheet) {
                 ActionSheet(title: Text("Select a filter"), buttons: [
-                    .default(Text("Crystalize")) {
+                    .default(Text(self.displayName(for: CIFilter.crystallize()))) {
                         self.setFilter(CIFilter.crystallize())
                     },
-                    .default(Text("Edges")) {
+                    .default(Text(self.displayName(for: CIFilter.edges()))) {
                         self.setFilter(CIFilter.edges())
                     },
-                    .default(Text("Gaussian Blur")) {
+                    .default(Text(self.displayName(for: CIFilter.gaussianBlur()))) {
                         self.setFilter(CIFilter.gaussianBlur())
                     },
-                    .default(Text("Pixellate")) {
+                    .default(Text(self.displayName(for: CIFilter.pixellate()))) {
                         self.setFilter(CIFilter.pixellate())
                     },
-                    .default(Text("SepiaTone")) {
+                    .default(Text(self.displayName(for: CIFilter.sepiaTone()))) {
                         self.setFilter(CIFilter.sepiaTone())
                     },
-                    .default(Text("Unsharp Mask")) {
+                    .default(Text(self.displayName(for: CIFilter.unsharpMask()))) {
                         self.setFilter(CIFilter.unsharpMask())
                     },
-                    .default(Text("Vignette")) {
+                    .default(Text(self.displayName(for: CIFilter.vignette()))) {
                         self.setFilter(CIFilter.vignette())
-                    }
+                    },
+                    .cancel()
                 ])
             }
             .alert(isPresented: $showingError) {
                 Alert(title: Text(self.errorMessage))
             }
         }
+    }
+    
+    private func displayName(for filter: CIFilter) -> String {
+        var res : String! = nil
+        if let disp = filter.attributes[kCIAttributeFilterDisplayName] as? String {
+            res = disp
+        }
+        return res
     }
     
     func setFilter(_ filter: CIFilter) {
