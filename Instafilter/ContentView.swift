@@ -15,6 +15,9 @@ struct ContentView: View {
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
 
+    @State private var showingError = false
+    @State private var errorMessage: String = ""
+
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
 
@@ -59,10 +62,13 @@ struct ContentView: View {
                     Button("Change Filter") {
                         self.showingFilterSheet = true
                     }
+                    
                     Spacer()
                     
                     Button("Save") {
                         guard let processedImage = self.processedImage else {
+                            self.errorMessage = "No Image selected"
+                            self.showingError = true
                             return
                         }
                         
@@ -73,7 +79,8 @@ struct ContentView: View {
                         }
 
                         imageSaver.errorHandler = {
-                            print("Oops: \($0.localizedDescription)")
+                            self.errorMessage = $0.localizedDescription
+                            self.showingError = true
                         }
                         
                         imageSaver.writeToPhotoAlbum(image: processedImage)
@@ -109,6 +116,9 @@ struct ContentView: View {
                         self.setFilter(CIFilter.vignette())
                     }
                 ])
+            }
+            .alert(isPresented: $showingError) {
+                Alert(title: Text(self.errorMessage))
             }
         }
     }
